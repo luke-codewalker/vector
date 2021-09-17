@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "TS_NODE_TRANSPILE_ONLY=true mocha --require ts-node/register test/**/*.test.ts"
   },
   "keywords": [],
   "author": "",
