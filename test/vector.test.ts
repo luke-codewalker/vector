@@ -58,7 +58,6 @@ describe('Vector', () => {
                 expect(() => Vector.add(vector, otherVector)).to.throw();
             })
         })
-
     })
 
     describe('Subtraction', () => {
@@ -92,5 +91,13 @@ describe('Vector', () => {
             })
         })
 
+    })
+
+    describe('Scalar multiplication', () => {
+        it('Should multiply with scalar', () => {
+            const vector = new Vector(7, 12, 0);
+            vector.multiply(5);
+            expect(vector.components).to.have.same.members([35, 60, 0]);
+        })
     })
 })

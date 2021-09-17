@@ -71,4 +71,10 @@ export class Vector {
             this.components[i] -= other.components[i];
         }
     }
+
+    multiply(scalar: number): void {
+        for (let i = 0; i < this.components.length; i++) {
+            this.components[i] *= scalar;
+        }
+    }
 }
