@@ -5,6 +5,7 @@ export class Vector {
         this.components = args;
     }
 
+    // Accessors
     get dimensions(): number {
         return this.components.length;
     }
@@ -19,5 +20,31 @@ export class Vector {
 
     get z(): number {
         return this.components[2];
+    }
+
+    // Static methods
+    static add(first: Vector, second: Vector): Vector {
+        if (first.dimensions !== second.dimensions) {
+            throw new Error(`Cant add vectors of different dimensions. First vector: ${first.dimensions}, second vector ${second.dimensions} `);
+        }
+
+        const components: number[] = [];
+
+        for (let i = 0; i < first.components.length; i++) {
+            components.push(first.components[i] + second.components[i]);
+        }
+
+        return new Vector(...components);
+    }
+
+    // Instance methods
+    add(other: Vector): void {
+        if (other.dimensions !== this.dimensions) {
+            throw new Error(`Cant add vectors of different dimensions. This vector: ${this.dimensions}, the other vector ${other.dimensions} `);
+        }
+
+        for (let i = 0; i < this.components.length; i++) {
+            this.components[i] += other.components[i];
+        }
     }
 }
