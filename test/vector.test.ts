@@ -60,4 +60,37 @@ describe('Vector', () => {
         })
 
     })
+
+    describe('Subtraction', () => {
+        describe('Instance method', () => {
+            it('Should subtract two vectors', () => {
+                const vector = new Vector(6, 200, 14);
+                const otherVector = new Vector(90, 89, 0);
+                vector.subtract(otherVector);
+                expect(vector.components).to.have.same.members([-84, 111, 14]);
+            })
+
+            it('Should throw an error on incorrect dimensions', () => {
+                const vector = new Vector(6, 89);
+                const otherVector = new Vector(90, 123, 0);
+                expect(() => vector.subtract(otherVector)).to.throw();
+            })
+        })
+
+        describe('Static method', () => {
+            it('Should subtract two vectors with static method', () => {
+                const vector = new Vector(10, 201, 15);
+                const otherVector = new Vector(90, 89, 1);
+                const sumVector = Vector.subtract(vector, otherVector);
+                expect(sumVector.components).to.have.same.members([-80, 112, 14]);
+            })
+
+            it('Should throw an error on incorrect dimensions', () => {
+                const vector = new Vector(6, 89);
+                const otherVector = new Vector(90, 123, 0);
+                expect(() => Vector.subtract(vector, otherVector)).to.throw();
+            })
+        })
+
+    })
 })
