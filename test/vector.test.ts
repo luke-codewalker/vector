@@ -146,4 +146,16 @@ describe('Vector', () => {
             expect(() => Vector.cross(vector, otherVector)).to.throw();
         })
     })
+
+    describe('Magnitude', () => {
+        it('Should calculate magnitude squared correctly', () => {
+            const vector = new Vector(2, 8, 5);
+            expect(vector.magnitudeSquared()).to.be.equal(93);
+        })
+
+        it('Should calculate magnitude correctly', () => {
+            const vector = new Vector(2, 8, 10);
+            expect(vector.magnitude()).to.be.equal(Math.sqrt(168));
+        })
+    })
 })

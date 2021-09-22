@@ -103,4 +103,12 @@ export class Vector {
             this.components[i] /= scalar;
         }
     }
+
+    magnitudeSquared(): number {
+        return Vector.dot(this, this);
+    }
+
+    magnitude(): number {
+        return Math.sqrt(this.magnitudeSquared());
+    }
 }
