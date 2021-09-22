@@ -100,4 +100,12 @@ describe('Vector', () => {
             expect(vector.components).to.have.same.members([35, 60, 0]);
         })
     })
+
+    describe('Scalar division', () => {
+        it('Should divide with scalar', () => {
+            const vector = new Vector(8, 12, 0);
+            vector.divide(2);
+            expect(vector.components).to.have.same.members([4, 6, 0]);
+        })
+    })
 })

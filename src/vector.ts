@@ -77,4 +77,10 @@ export class Vector {
             this.components[i] *= scalar;
         }
     }
+
+    divide(scalar: number): void {
+        for (let i = 0; i < this.components.length; i++) {
+            this.components[i] /= scalar;
+        }
+    }
 }
