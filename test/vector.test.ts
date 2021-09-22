@@ -9,6 +9,13 @@ describe('Vector', () => {
             expect(vector.components).to.have.same.members([3, 6, 7]);
         })
 
+        it('Should create empty vectors with empty component array and allow setting values later', () => {
+            const vector = new Vector();
+            expect(vector.components.length).to.equal(0);
+            vector.components.push(1);
+            expect(vector.components).to.have.same.members([1]);
+        })
+
         it('Should give correct dimensions', () => {
             const vector = new Vector(12, 6);
             expect(vector.dimensions).to.equal(2);
@@ -121,6 +128,22 @@ describe('Vector', () => {
             const vector = new Vector(6, 89);
             const otherVector = new Vector(90, 123, 0);
             expect(() => Vector.dot(vector, otherVector)).to.throw();
+        })
+    })
+
+
+    describe('Cross product', () => {
+        it('Should calculate the correct cross product', () => {
+            const vector = new Vector(8, 12, 0);
+            const otherVector = new Vector(-3, 84, 7);
+            const crossProductVector = Vector.cross(vector, otherVector);
+            expect(crossProductVector.components).to.have.same.members([84, -56, 708]);
+        })
+
+        it('Should throw an error on incorrect dimensions', () => {
+            const vector = new Vector(6, 89);
+            const otherVector = new Vector(90, 0);
+            expect(() => Vector.cross(vector, otherVector)).to.throw();
         })
     })
 })

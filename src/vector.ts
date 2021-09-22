@@ -53,10 +53,22 @@ export class Vector {
 
     static dot(first: Vector, second: Vector): number {
         if (first.dimensions !== second.dimensions) {
-            throw new Error(`Can't calculate dot product for vectors of different dimensions. First vector: ${first.dimensions}, second vector ${second.dimensions} `);
+            throw new Error(`Can't calculate dot product for vectors of different dimensions. First vector: ${first.dimensions}, second vector ${second.dimensions}`);
         }
 
         return first.components.reduce((sum, component, index) => sum += component * second.components[index], 0);
+    }
+
+    static cross(first: Vector, second: Vector): Vector {
+        if (first.dimensions !== 3 || second.dimensions !== 3) {
+            throw new Error(`Can only calculate cross product in 3-dimensional space. First vector has ${first.dimensions} dimensions, second vector has ${second.dimensions} dimensions`);
+        }
+
+        const x = first.y * second.z - first.z * second.y;
+        const y = first.z * second.x - first.x * second.z;
+        const z = first.x * second.y - first.y * second.x;
+
+        return new Vector(x, y, z);
     }
 
     // Instance methods
