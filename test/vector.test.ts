@@ -108,4 +108,19 @@ describe('Vector', () => {
             expect(vector.components).to.have.same.members([4, 6, 0]);
         })
     })
+
+    describe('Dot product', () => {
+        it('Should calculate the correct dot product', () => {
+            const vector = new Vector(8, 12, 0);
+            const otherVector = new Vector(-1, 2, 0);
+            const dotProduct = Vector.dot(vector, otherVector);
+            expect(dotProduct).to.be.equal(16);
+        })
+
+        it('Should throw an error on incorrect dimensions', () => {
+            const vector = new Vector(6, 89);
+            const otherVector = new Vector(90, 123, 0);
+            expect(() => Vector.dot(vector, otherVector)).to.throw();
+        })
+    })
 })

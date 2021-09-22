@@ -51,6 +51,14 @@ export class Vector {
         return new Vector(...components);
     }
 
+    static dot(first: Vector, second: Vector): number {
+        if (first.dimensions !== second.dimensions) {
+            throw new Error(`Can't calculate dot product for vectors of different dimensions. First vector: ${first.dimensions}, second vector ${second.dimensions} `);
+        }
+
+        return first.components.reduce((sum, component, index) => sum += component * second.components[index], 0);
+    }
+
     // Instance methods
     add(other: Vector): void {
         if (other.dimensions !== this.dimensions) {
